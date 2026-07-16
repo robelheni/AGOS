@@ -457,7 +457,7 @@ p, li, a, span { overflow-wrap: anywhere; }
 .home-hero__content {
   position: relative;
   z-index: 2;
-  padding: calc(var(--header-height) + 6rem) var(--gutter) clamp(3.5rem, 7vw, 6rem);
+  padding: 0 var(--gutter) clamp(3.5rem, 7vw, 6rem);
   max-width: 80rem;
   display: flex;
   flex-direction: column;
