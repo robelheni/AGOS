@@ -1177,29 +1177,6 @@ p, li, a, span { overflow-wrap: anywhere; }
     --gutter: 1.1rem;
   }
 
-  .home-hero__headline {
-    font-size: clamp(2.6rem, 11vw, 4rem);
-  }
-
-  .home-hero__eyebrow {
-    font-size: .58rem;
-    margin-bottom: 1rem;
-  }
-
-  .home-hero__sub {
-    font-size: .88rem;
-    margin-top: 1.25rem;
-    max-width: 24rem;
-  }
-
-  .home-hero__actions {
-    margin-top: 1.5rem;
-  }
-
-  .home-hero__content {
-    padding-bottom: clamp(2.5rem, 8vw, 4rem);
-  }
-
   .production-marquee {
     font-size: clamp(.85rem, 4vw, 1.1rem);
   }
