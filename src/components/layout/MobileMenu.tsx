@@ -104,7 +104,7 @@ export default function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) 
               alt="Agos Design"
               width={120}
               height={48}
-              style={{ height: '100px', width: 'auto', display: 'block', mixBlendMode: 'multiply' }}
+              style={{ height: '2rem', width: 'auto', display: 'block', mixBlendMode: 'multiply' }}
             />
           </Link>
 
