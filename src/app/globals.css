@@ -419,10 +419,8 @@ p, li, a, span { overflow-wrap: anywhere; }
 .home-hero {
   position: relative;
   height: 100vh;
-  height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  height: 100svh;
+  min-height: 560px;
   overflow: hidden;
   background: var(--charcoal);
 }
@@ -455,9 +453,12 @@ p, li, a, span { overflow-wrap: anywhere; }
 
 /* Content anchored to bottom-left */
 .home-hero__content {
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 2;
-  padding: calc(var(--header-height) + 8rem) var(--gutter) clamp(3.5rem, 7vw, 6rem);
+  padding: 0 var(--gutter) clamp(4rem, 8vw, 7rem);
   max-width: 80rem;
   display: flex;
   flex-direction: column;
@@ -481,7 +482,7 @@ p, li, a, span { overflow-wrap: anywhere; }
 
 .home-hero__headline {
   font-family: var(--font-display);
-  font-size: clamp(4.8rem, 16vw, 15rem);
+  font-size: clamp(4rem, 13vw, 11rem);
   font-weight: 900;
   letter-spacing: -.065em;
   line-height: .82;
