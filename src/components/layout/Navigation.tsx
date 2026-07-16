@@ -73,7 +73,7 @@ export default function Navigation() {
               priority
               className={isDark ? 'nav-logo--dark' : 'nav-logo--light'}
               style={{
-                height: isDark ? 'clamp(72px, 18vw, 150px)' : 'clamp(48px, 8vw, 100px)',
+                height: isDark ? 'clamp(90px, 22vw, 150px)' : 'clamp(48px, 8vw, 100px)',
                 width: 'auto',
                 display: 'block',
                 mixBlendMode: isDark ? 'normal' : 'multiply',
