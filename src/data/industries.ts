@@ -1,0 +1,77 @@
+import { Industry } from '@/types'
+import { images } from './images'
+
+export const industries: Industry[] = [
+  {
+    id: '1',
+    slug: 'restaurants-cafes',
+    name: 'Restaurants & Cafes',
+    description: 'From shopfront signage and window graphics to menu boards and staff uniforms, we help food businesses attract and retain customers.',
+    image: images.industries.restaurant,
+    services: ['shop-signs', 'window-graphics', 'banner-printing', 'flyers-leaflets', 'workwear-printing'],
+  },
+  {
+    id: '2',
+    slug: 'hair-beauty',
+    name: 'Barbers & Salons',
+    description: 'Make the frontage, window graphics, price lists and staff clothing feel like one visible brand system.',
+    image: images.industries.salon,
+    services: ['shop-signs', 'window-graphics', 'business-cards', 'roller-banners', 'workwear-printing'],
+  },
+  {
+    id: '3',
+    slug: 'retail',
+    name: 'Retail',
+    description: 'Drive footfall and boost sales with eye-catching retail signage, point-of-sale displays, promotional banners and printed marketing materials.',
+    image: images.industries.retail,
+    services: ['shop-signs', 'banner-printing', 'posters', 'window-graphics', 'flyers-leaflets'],
+  },
+  {
+    id: '4',
+    slug: 'construction-trades',
+    name: 'Construction & Trades',
+    description: 'Brand your vehicles, tool boards and site hoardings to generate leads while you work. Professional workwear keeps your team looking sharp on site.',
+    image: images.industries.construction,
+    services: ['vehicle-graphics', 'workwear-printing', 'banner-printing', 'sign-installation'],
+  },
+  {
+    id: '5',
+    slug: 'churches-charities',
+    name: 'Churches & Charities',
+    description: 'Communicate your message clearly with outdoor signage, event banners, promotional leaflets and branded display materials for your community.',
+    image: images.industries.church,
+    services: ['shop-signs', 'banner-printing', 'flyers-leaflets', 'roller-banners', 'stickers-labels'],
+  },
+  {
+    id: '6',
+    slug: 'events',
+    name: 'Events & Entertainment',
+    description: 'Create memorable event experiences with large-format banners, stage backdrops, event programmes, branded merchandise and exhibition displays.',
+    image: images.industries.events,
+    services: ['banner-printing', 'exhibition-displays', 'roller-banners', 't-shirt-printing', 'posters'],
+  },
+  {
+    id: '7',
+    slug: 'offices-corporate',
+    name: 'Offices & Corporate',
+    description: 'Brand your office environment with wall graphics, wayfinding, window films and reception signage that reinforces your company culture.',
+    image: images.industries.office,
+    services: ['window-graphics', 'graphic-design', 'business-cards', 'roller-banners', 'workwear-printing'],
+  },
+  {
+    id: '8',
+    slug: 'schools-education',
+    name: 'Schools & Education',
+    description: 'Inspire students and impress visitors with motivational wall art, wayfinding systems, event banners and branded sportswear for school teams.',
+    image: images.industries.school,
+    services: ['shop-signs', 'window-graphics', 'banner-printing', 't-shirt-printing', 'flyers-leaflets'],
+  },
+  {
+    id: '9',
+    slug: 'startups',
+    name: 'Startups & New Businesses',
+    description: 'Launch with impact. We help new businesses establish a professional brand presence with affordable signage, print and design packages.',
+    image: images.industries.startup,
+    services: ['graphic-design', 'business-cards', 'flyers-leaflets', 'shop-signs', 'roller-banners'],
+  },
+]
