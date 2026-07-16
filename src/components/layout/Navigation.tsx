@@ -41,7 +41,7 @@ export default function Navigation() {
           position: 'fixed',
           inset: '0 0 auto 0',
           zIndex: 120,
-          height: 'var(--header-height)',
+          minHeight: 'var(--header-height)',
           display: 'flex',
           alignItems: 'center',
           transition: 'background 450ms cubic-bezier(.16,1,.3,1), box-shadow 450ms cubic-bezier(.16,1,.3,1), backdrop-filter 450ms',
@@ -63,8 +63,6 @@ export default function Navigation() {
               flexShrink: 0,
               textDecoration: 'none',
               lineHeight: 0,
-              transform: isDark ? 'translateX(-200px)' : 'none',
-              transition: 'transform 450ms cubic-bezier(.16,1,.3,1)',
             }}
           >
             <Image
@@ -73,8 +71,9 @@ export default function Navigation() {
               width={120}
               height={48}
               priority
+              className={isDark ? 'nav-logo--dark' : 'nav-logo--light'}
               style={{
-                height: isDark ? '200px' : '150px',
+                height: 'clamp(44px, 8vw, 150px)',
                 width: 'auto',
                 display: 'block',
                 mixBlendMode: isDark ? 'normal' : 'multiply',
