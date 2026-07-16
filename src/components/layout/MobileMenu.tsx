@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef } from 'react'
@@ -96,17 +97,15 @@ export default function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) 
           <Link
             href="/"
             onClick={onClose}
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(1.6rem, 2.4vw, 2.2rem)',
-              fontWeight: 900,
-              letterSpacing: '-.07em',
-              lineHeight: 1,
-              textDecoration: 'none',
-              color: 'var(--ink)',
-            }}
+            style={{ textDecoration: 'none', lineHeight: 0 }}
           >
-            AGOS
+            <Image
+              src="/images/agos/Logo.png"
+              alt="Agos Design"
+              width={120}
+              height={48}
+              style={{ height: '3.2rem', width: 'auto', display: 'block', mixBlendMode: 'multiply' }}
+            />
           </Link>
 
           <button

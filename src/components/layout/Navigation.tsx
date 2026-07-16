@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -52,25 +53,34 @@ export default function Navigation() {
       >
         <div
           className="container"
-          style={{ display: 'flex', alignItems: 'center', width: '100%' }}
+          style={{ display: 'flex', alignItems: 'center', width: '100%', paddingInline: 'clamp(1.75rem, 4vw, 3.75rem)' }}
         >
           {/* Logo */}
           <Link
             href="/"
             aria-label="Agos Design home"
             style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(1.7rem, 2.4vw, 2.5rem)',
-              fontWeight: 900,
-              letterSpacing: '-.07em',
-              lineHeight: 1,
-              textDecoration: 'none',
-              color: isDark ? '#fff' : 'var(--ink)',
-              transition: 'color 450ms cubic-bezier(.16,1,.3,1)',
               flexShrink: 0,
+              textDecoration: 'none',
+              lineHeight: 0,
+              transform: isDark ? 'translateX(-200px)' : 'none',
+              transition: 'transform 450ms cubic-bezier(.16,1,.3,1)',
             }}
           >
-            AGOS
+            <Image
+              src={isDark ? '/images/agos/Logo2.jpg' : '/images/agos/Logo.png'}
+              alt="Agos Design"
+              width={120}
+              height={48}
+              priority
+              style={{
+                height: isDark ? '200px' : '150px',
+                width: 'auto',
+                display: 'block',
+                mixBlendMode: isDark ? 'normal' : 'multiply',
+                transition: 'height 450ms cubic-bezier(.16,1,.3,1)',
+              }}
+            />
           </Link>
 
           {/* Right side */}

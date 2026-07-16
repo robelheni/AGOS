@@ -37,7 +37,7 @@
   --line-dark: #2e2c2a;
   --accent: #8c3f2b;
   --accent-dark: #6b2e1e;
-  --header-height: 4.5rem;
+  --header-height: 8rem;
   --container: 90rem;
   --gutter: clamp(1.25rem, 3.5vw, 3.75rem);
   --section-y: clamp(5rem, 9vw, 9.5rem);
