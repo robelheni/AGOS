@@ -139,12 +139,12 @@ export default function QuoteForm() {
 
   if (status === 'success') {
     return (
-      <div role="status" aria-live="polite">
-        <p style={{ fontSize: '.62rem', fontWeight: 700, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '1.25rem' }}>Quote request</p>
-        <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', fontWeight: 900, letterSpacing: '-.05em', lineHeight: .92, marginBottom: '1rem' }}>Your details have been received.</h2>
-        <p style={{ fontSize: '.95rem', fontWeight: 500, lineHeight: 1.75, color: 'var(--ink-muted)' }}>
+      <div className="quote-success" role="status" aria-live="polite">
+        <p>Quote request</p>
+        <h2>Your details have been received.</h2>
+        <span>
           This currently uses a mock submission endpoint. Connect email, file storage or CRM handling before relying on it for live enquiries.
-        </p>
+        </span>
         <Button type="button" variant="secondary" className="mt-7" onClick={() => { setForm(initialData); setStep(1); setStatus('idle') }}>
           Start another quote
         </Button>
@@ -153,23 +153,18 @@ export default function QuoteForm() {
   }
 
   return (
-    <div>
-      <div className="mb-8">
-        <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-          <p style={{ fontSize: '.72rem', fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--ink-muted)' }}>Step {step} of {steps.length} — {steps[step - 1].title}</p>
+    <div className="quote-form">
+      <div className="quote-progress">
+        <div>
+          <p>Step {step} of {steps.length}</p>
+          <strong>{steps[step - 1].title}</strong>
         </div>
-        <div className="h-2 bg-[color-mix(in_srgb,var(--ink)_12%,transparent)]" aria-hidden="true">
-          <div className="h-full bg-[var(--accent)] transition-[width] duration-[var(--duration-base)] ease-[var(--ease-out)]" style={{ width: progress }} />
+        <div className="quote-progress__track" aria-hidden="true">
+          <div className="quote-progress__fill" style={{ width: progress }} />
         </div>
-        <ol className="mt-3 flex flex-wrap gap-x-5 gap-y-1" aria-label="Quote form progress">
+        <ol aria-label="Quote form progress">
           {steps.map((item) => (
-            <li key={item.id} style={{
-              fontSize: '.65rem',
-              fontWeight: 700,
-              letterSpacing: '.1em',
-              textTransform: 'uppercase',
-              color: item.id <= step ? 'var(--ink)' : 'var(--stone)',
-            }}>
+            <li key={item.id} data-active={item.id <= step}>
               {item.title}
             </li>
           ))}
@@ -183,11 +178,11 @@ export default function QuoteForm() {
       )}
 
       {step === 1 && (
-        <section aria-labelledby="quote-service">
-          <p id="quote-service" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.1rem, 2vw, 1.5rem)', fontWeight: 900, letterSpacing: '-.04em', lineHeight: .95, color: 'var(--ink)', marginBottom: '.75rem' }}>What are you making?</p>
-          <p style={{ fontSize: '.82rem', fontWeight: 600, color: 'var(--ink-muted)', marginBottom: '1.75rem' }}>Choose the closest fit. You can add more detail later.</p>
+        <section className="quote-step" aria-labelledby="quote-service">
+          <h2 id="quote-service">What are you making?</h2>
+          <p>Choose the closest fit. You can add more detail later.</p>
           {errors.service && <p className="form-error mb-4" role="alert">{errors.service}</p>}
-          <div style={{ display: 'grid', gap: '1px', gridTemplateColumns: 'repeat(2, 1fr)', background: 'var(--line)' }} className="quote-service-grid">
+          <div className="quote-service-grid">
             {serviceOptions.map((service, i) => {
               const active = form.service === service
               return (
@@ -195,51 +190,12 @@ export default function QuoteForm() {
                   key={service}
                   type="button"
                   onClick={() => update('service', service)}
-                  style={{
-                    padding: '1.4rem 1.25rem',
-                    textAlign: 'left',
-                    background: active ? 'var(--ink)' : 'var(--paper)',
-                    color: active ? 'var(--paper)' : 'var(--ink)',
-                    border: 'none',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '.6rem',
-                    transition: 'background 200ms, color 200ms',
-                    clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%)',
-                  }}
+                  className="quote-service-choice"
                   aria-pressed={active}
                 >
-                  <span style={{
-                    fontSize: '.6rem',
-                    fontWeight: 500,
-                    letterSpacing: '.08em',
-                    color: active ? 'rgba(255,255,255,.45)' : 'var(--stone)',
-                    transition: 'color 200ms',
-                  }}>
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <span style={{
-                    fontSize: '.92rem',
-                    fontWeight: 700,
-                    letterSpacing: '-.02em',
-                    lineHeight: 1.2,
-                    color: active ? '#fff' : 'var(--ink)',
-                    transition: 'color 200ms',
-                  }}>
-                    {service}
-                  </span>
-                  {active && (
-                    <span style={{
-                      fontSize: '.6rem',
-                      fontWeight: 700,
-                      letterSpacing: '.12em',
-                      textTransform: 'uppercase',
-                      color: 'rgba(255,255,255,.6)',
-                    }}>
-                      Selected ✓
-                    </span>
-                  )}
+                  <span>{String(i + 1).padStart(2, '0')}</span>
+                  <strong>{service}</strong>
+                  {active && <em>Selected</em>}
                 </button>
               )
             })}
@@ -248,8 +204,8 @@ export default function QuoteForm() {
       )}
 
       {step === 2 && (
-        <section aria-labelledby="quote-details">
-          <p id="quote-details" style={{ fontSize: '.62rem', fontWeight: 700, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--ink-muted)', marginBottom: '1.5rem' }}>Production details</p>
+        <section className="quote-step" aria-labelledby="quote-details">
+          <h2 id="quote-details">Production details</h2>
           <div className="grid gap-5 md:grid-cols-2">
             <TextField label="Quantity" value={form.quantity} onChange={(value) => update('quantity', value)} autoComplete="off" />
             <TextField label="Approximate size" value={form.size} onChange={(value) => update('size', value)} autoComplete="off" />
@@ -296,8 +252,8 @@ export default function QuoteForm() {
       )}
 
       {step === 3 && (
-        <section aria-labelledby="quote-contact">
-          <p id="quote-contact" style={{ fontSize: '.62rem', fontWeight: 700, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--ink-muted)', marginBottom: '1.5rem' }}>Contact details</p>
+        <section className="quote-step" aria-labelledby="quote-contact">
+          <h2 id="quote-contact">Contact details</h2>
           <div className="grid gap-5 md:grid-cols-2">
             <TextField label="Name" value={form.name} onChange={(value) => update('name', value)} error={errors.name} autoComplete="name" />
             <TextField label="Company" value={form.company} onChange={(value) => update('company', value)} autoComplete="organization" />
@@ -314,9 +270,9 @@ export default function QuoteForm() {
       )}
 
       {step === 4 && (
-        <section aria-labelledby="quote-uploads">
-          <p id="quote-uploads" style={{ fontSize: '.62rem', fontWeight: 700, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--ink-muted)', marginBottom: '.5rem' }}>Uploads and references</p>
-          <p style={{ fontSize: '.9rem', fontWeight: 500, color: 'var(--ink-muted)', lineHeight: 1.7, marginBottom: '1.5rem' }}>Attach anything useful. File upload metadata is captured in the mock request; connect storage before live use.</p>
+        <section className="quote-step" aria-labelledby="quote-uploads">
+          <h2 id="quote-uploads">Uploads and references</h2>
+          <p>Attach anything useful. File upload metadata is captured in the mock request; connect storage before live use.</p>
 
           <div className="grid gap-2 sm:grid-cols-2">
             {fileTypes.map((type) => {
@@ -371,7 +327,7 @@ export default function QuoteForm() {
         </section>
       )}
 
-      <div className="mt-9 flex items-center justify-between gap-3 border-t border-[var(--line)] pt-6">
+      <div className="quote-form-actions">
         <Button type="button" variant="tertiary" onClick={back} disabled={step === 1 || status === 'submitting'}>
           Back
         </Button>
