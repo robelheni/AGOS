@@ -48,7 +48,7 @@ export default function Navigation() {
         }}
       >
         <div
-          className="container"
+          className="container nav-inner"
           style={{ display: 'flex', alignItems: 'center', width: '100%', paddingInline: 'clamp(1.75rem, 4vw, 3.75rem)' }}
         >
           {/* Logo */}
@@ -69,7 +69,7 @@ export default function Navigation() {
               priority
               className={isDark ? 'nav-logo--dark' : 'nav-logo--light'}
               style={{
-                height: isDark ? 'clamp(90px, 22vw, 150px)' : 'clamp(72px, 14vw, 100px)',
+                height: isDark ? 'clamp(72px, 16vw, 118px)' : 'clamp(58px, 10vw, 82px)',
                 width: 'auto',
                 display: 'block',
                 mixBlendMode: isDark ? 'normal' : 'multiply',
@@ -83,6 +83,7 @@ export default function Navigation() {
             {/* Quote CTA */}
             <Link
               href="/quote"
+              className="nav-quote-link"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',

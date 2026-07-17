@@ -24,85 +24,57 @@ const company = [
 
 export default function Footer() {
   return (
-    <footer className="site-footer">
+    <footer id="site-footer" className="site-footer">
       <div className="container">
-        {/* Top */}
-        <div className="border-b border-[var(--line-dark)] py-14 lg:py-20">
-          <Link
-            href="/"
-            aria-label="Agos Design home"
-            className="block w-fit opacity-[.18] transition-opacity hover:opacity-[.26]"
-          >
-            <Image
-              src="/images/agos/Logo2.jpg"
-              alt="Agos Design"
-              width={1536}
-              height={1024}
-              className="h-auto w-[min(72vw,44rem)]"
-            />
+        <div className="footer-brand">
+          <Link href="/" aria-label="Agos Design home" className="footer-logo-link">
+            <Image src="/images/agos/Logo2.jpg" alt="Agos Design" width={1536} height={1024} className="footer-logo" />
           </Link>
+
+          <p className="footer-summary">
+            Signs, print and branded surfaces for businesses that need to look considered in the real world.
+          </p>
         </div>
 
-        {/* Grid */}
-        <div className="grid gap-12 py-14 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,.9fr)_minmax(0,.9fr)] lg:gap-20 lg:py-20">
-          {/* Left: contact + tagline */}
-          <div>
-            <p className="mb-8 max-w-[22rem] text-[.95rem] font-medium leading-[1.72] text-[rgba(255,255,255,.4)]">
+        <div className="footer-grid">
+          <div className="footer-contact">
+            <p className="footer-contact__copy">
               Printing, signage, clothing, banners, vehicle graphics and branded materials — made to be seen.
             </p>
-            <div className="grid gap-2.5">
-              <a
-                href={`tel:${CONTACT_PHONE.replace(/\s/g, '')}`}
-                className="text-[.95rem] font-semibold text-[rgba(255,255,255,.65)] transition-colors hover:text-white"
-              >
+            <div className="footer-contact__links">
+              <a href={`tel:${CONTACT_PHONE.replace(/\s/g, '')}`}>
                 {CONTACT_PHONE}
               </a>
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
-                className="text-[.95rem] font-semibold text-[rgba(255,255,255,.65)] transition-colors hover:text-white"
-              >
+              <a href={`mailto:${CONTACT_EMAIL}`}>
                 {CONTACT_EMAIL}
               </a>
             </div>
           </div>
 
-          {/* Services */}
-          <nav aria-label="Services navigation">
-            <p className="fine-label mb-6 text-[rgba(255,255,255,.25)]">Services</p>
-            <ul className="grid gap-2.5">
+          <nav className="footer-nav" aria-label="Services navigation">
+            <p>Services</p>
+            <ul>
               {services.map((s) => (
                 <li key={s.href}>
-                  <Link
-                    href={s.href}
-                    className="text-[.88rem] font-medium text-[rgba(255,255,255,.45)] transition-colors hover:text-white"
-                  >
-                    {s.label}
-                  </Link>
+                  <Link href={s.href}>{s.label}</Link>
                 </li>
               ))}
             </ul>
           </nav>
 
-          {/* Company */}
-          <nav aria-label="Company navigation">
-            <p className="fine-label mb-6 text-[rgba(255,255,255,.25)]">Company</p>
-            <ul className="grid gap-2.5">
+          <nav className="footer-nav" aria-label="Company navigation">
+            <p>Company</p>
+            <ul>
               {company.map((c) => (
                 <li key={c.href}>
-                  <Link
-                    href={c.href}
-                    className="text-[.88rem] font-medium text-[rgba(255,255,255,.45)] transition-colors hover:text-white"
-                  >
-                    {c.label}
-                  </Link>
+                  <Link href={c.href}>{c.label}</Link>
                 </li>
               ))}
             </ul>
           </nav>
         </div>
 
-        {/* Bottom */}
-        <div className="flex flex-col gap-2 border-t border-[var(--line-dark)] py-7 text-[.72rem] font-semibold text-[rgba(255,255,255,.22)] sm:flex-row sm:items-center sm:justify-between">
+        <div className="footer-bottom">
           <p>© {new Date().getFullYear()} {COMPANY_FULL_NAME}</p>
           <p>Print / Signs / Clothing / Graphics</p>
         </div>

@@ -71,7 +71,7 @@ export default function HomePage() {
         {/* Content — bottom left */}
         <div className="home-hero__content">
           <h1 className="home-hero__headline">
-            Built<br />to be<br />seen.
+            Built<span className="hero-desktop-space"> </span><br className="hero-mobile-break" />to be<br />seen.
           </h1>
 
           <p className="home-hero__sub">

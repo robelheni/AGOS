@@ -1,17 +1,11 @@
 'use client'
 
-import { useEffect, useLayoutEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 
 export default function PageMotion() {
   const pathname = usePathname()
   const observerRef = useRef<IntersectionObserver | null>(null)
-
-  useLayoutEffect(() => {
-    document.querySelectorAll<HTMLElement>('.is-visible').forEach((el) => {
-      el.classList.remove('is-visible')
-    })
-  }, [pathname])
 
   useEffect(() => {
     const root = document.documentElement
