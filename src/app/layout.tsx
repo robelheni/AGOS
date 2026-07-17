@@ -3,6 +3,7 @@ import './globals.css'
 import Navigation from '@/components/layout/Navigation'
 import Footer from '@/components/layout/Footer'
 import PageMotion from '@/components/motion/PageMotion'
+import SplashScreen from '@/components/motion/SplashScreen'
 
 export const metadata: Metadata = {
   title: {
@@ -25,6 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <a href="#main" className="skip-link">Skip to content</a>
         <div className="site-shell">
+          <SplashScreen />
           <PageMotion />
           <Navigation />
           <main id="main">{children}</main>

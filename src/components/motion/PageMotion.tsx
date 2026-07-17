@@ -1,11 +1,17 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 
 export default function PageMotion() {
   const pathname = usePathname()
   const observerRef = useRef<IntersectionObserver | null>(null)
+
+  useLayoutEffect(() => {
+    document.querySelectorAll<HTMLElement>('.is-visible').forEach((el) => {
+      el.classList.remove('is-visible')
+    })
+  }, [pathname])
 
   useEffect(() => {
     const root = document.documentElement
@@ -13,16 +19,10 @@ export default function PageMotion() {
 
     root.classList.add('motion-ready')
 
-    // Disconnect any lingering observer from the previous page
     if (observerRef.current) {
       observerRef.current.disconnect()
       observerRef.current = null
     }
-
-    // Synchronously strip is-visible so the DOM matches the server HTML before React reconciles
-    document.querySelectorAll<HTMLElement>('.is-visible').forEach((el) => {
-      el.classList.remove('is-visible')
-    })
 
     const rafId = requestAnimationFrame(() => {
       const targets = Array.from(

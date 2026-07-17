@@ -28,10 +28,6 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  useEffect(() => {
-    setMenuOpen(false)
-  }, [pathname])
-
   const isDark = isHome && !scrolled && !menuOpen
 
   return (

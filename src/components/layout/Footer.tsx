@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { CONTACT_EMAIL, CONTACT_PHONE, COMPANY_FULL_NAME } from '@/lib/constants'
 
@@ -30,9 +31,15 @@ export default function Footer() {
           <Link
             href="/"
             aria-label="Agos Design home"
-            className="block font-display text-[clamp(4rem,13vw,11rem)] font-black uppercase leading-[.8] tracking-[-.07em] text-white opacity-[.06] transition-opacity hover:opacity-[.1]"
+            className="block w-fit opacity-[.18] transition-opacity hover:opacity-[.26]"
           >
-            AGOS
+            <Image
+              src="/images/agos/Logo2.jpg"
+              alt="Agos Design"
+              width={1536}
+              height={1024}
+              className="h-auto w-[min(72vw,44rem)]"
+            />
           </Link>
         </div>
 
