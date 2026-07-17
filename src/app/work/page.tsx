@@ -18,18 +18,17 @@ export default function WorkPage() {
 
   return (
     <>
-      {/* Page header — compact, no giant padding */}
-      <section className="surface-paper" style={{ paddingTop: 'calc(var(--header-height) + 3rem)', paddingBottom: '2.5rem' }}>
+      <section className="work-list-hero">
         <div className="container">
-          <div style={{ borderTop: '1px solid var(--line)', paddingTop: '2rem' }}>
-            <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '2rem', flexWrap: 'wrap' }}>
+          <div className="work-list-hero__inner">
+            <div className="work-list-hero__row">
               <div>
-                <h1 className="display-lg">Our Work</h1>
-                <p style={{ marginTop: '1rem', fontSize: 'clamp(.95rem, 1.4vw, 1.1rem)', fontWeight: 500, color: 'var(--ink-muted)', maxWidth: '40ch' }}>
+                <h1>Our Work</h1>
+                <p>
                   Signs, print &amp; clothing — made to be noticed.
                 </p>
               </div>
-              <Link href="/quote" className="btn btn-primary" style={{ flexShrink: 0 }}>
+              <Link href="/quote" className="btn btn-primary">
                 Start a Quote
               </Link>
             </div>
@@ -37,35 +36,19 @@ export default function WorkPage() {
         </div>
       </section>
 
-      {/* Filter bar */}
-      <div className="surface-paper" style={{ borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)' }}>
+      <div className="work-filter-bar">
         <div className="container">
           <div
             role="list"
             aria-label="Filter by category"
-            style={{ display: 'flex', gap: 0, overflowX: 'auto' }}
+            className="work-filter-list"
           >
             {categories.map((cat) => (
               <button
                 key={cat}
                 type="button"
-                role="listitem"
                 onClick={() => setActiveCategory(cat)}
-                style={{
-                  flexShrink: 0,
-                  padding: '1.1rem 1.5rem',
-                  fontSize: '.7rem',
-                  fontWeight: 700,
-                  letterSpacing: '.12em',
-                  textTransform: 'uppercase',
-                  border: 'none',
-                  borderRight: '1px solid var(--line)',
-                  background: activeCategory === cat ? 'var(--ink)' : 'transparent',
-                  color: activeCategory === cat ? 'var(--paper)' : 'var(--ink-muted)',
-                  cursor: 'pointer',
-                  transition: 'background 180ms, color 180ms',
-                  whiteSpace: 'nowrap',
-                }}
+                aria-pressed={activeCategory === cat}
               >
                 {cat}
               </button>
@@ -74,10 +57,9 @@ export default function WorkPage() {
         </div>
       </div>
 
-      {/* Project grid */}
-      <section className="section surface-paper">
+      <section className="work-list-section">
         <div className="container">
-          <motion.div layout className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+          <motion.div layout className="work-list-grid">
             <AnimatePresence mode="popLayout">
               {filtered.map((project, index) => (
                 <motion.div
@@ -87,9 +69,9 @@ export default function WorkPage() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 12 }}
                   transition={{ duration: .32, delay: index * 0.04 }}
-                  className={index === 0 && activeCategory === 'All' ? 'md:col-span-2' : ''}
+                  className={index === 0 && activeCategory === 'All' ? 'work-list-featured' : ''}
                 >
-                  <ProjectCard project={project} large={index === 0 && activeCategory === 'All'} />
+                  <ProjectCard project={project} large={index === 0 && activeCategory === 'All'} aspectRatio={index === 0 && activeCategory === 'All' ? '16/7' : '3/2'} />
                 </motion.div>
               ))}
             </AnimatePresence>
